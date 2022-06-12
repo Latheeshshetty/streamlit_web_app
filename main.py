@@ -4,13 +4,9 @@ import streamlit as st
 import numpy as np
 import librosa
 
-
 # open the pickle file
 pickle_in = open('classifier.pkl', 'rb')
 classifier = pickle.load(pickle_in)
-
-# app title
-st.title('Heart disease prediction')
 
 # defining the function for prediction
 
@@ -23,20 +19,28 @@ def predction(filename):
     return pred
 
 
-# uploding audio
-upload_audio = st.sidebar.file_uploader(label="uplod heart sound", type=".wav")
+def main():
+    # app title
+    st.title('Heart disease prediction')
 
-# displying the audio file
-if upload_audio is not None:
-    st.write(upload_audio)
-st.audio(upload_audio, format='audio/wav')
+    # uploding audio
+    upload_audio = st.sidebar.file_uploader(
+        label="uplod heart sound", type=".wav")
+
+    # displying the audio file
+    if upload_audio is not None:
+        st.write(upload_audio)
+    st.audio(upload_audio, format='audio/wav')
+
+    # prediction
+
+    if st.button('predict'):
+        result = predction(upload_audio)[0]
+        if result == 'normal':
+            st.success('Your heart sound is Normal')
+        else:
+            st.error('Your heart sound in Abnormal')
 
 
-# prediction
-
-if st.button('predict'):
-    result = predction(upload_audio)[0]
-    if result == 'normal':
-        st.success('Your heart sound is Normal')
-    else:
-        st.error('Your heart sound in Abnormal')
+if __name__ == '__main__':
+    main()
