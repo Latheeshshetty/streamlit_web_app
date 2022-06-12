@@ -19,28 +19,23 @@ def predction(filename):
     return pred
 
 
-def main():
-    # app title
-    st.title('Heart disease prediction')
+# app title
+st.title('Heart disease prediction')
 
-    # uploding audio
-    upload_audio = st.sidebar.file_uploader(
-        label="uplod heart sound", type=".wav")
+# uploding audio
+upload_audio = st.sidebar.file_uploader(
+    label="uplod heart sound", type=".wav")
 
-    # displying the audio file
-    if upload_audio is not None:
-        st.write(upload_audio)
-    st.audio(upload_audio, format='audio/wav')
+# displying the audio file
+if upload_audio is not None:
+    st.write(upload_audio)
+st.audio(upload_audio, format='audio/wav')
 
-    # prediction
+# prediction
 
-    if st.button('predict'):
-        result = predction(upload_audio)[0]
-        if result == 'normal':
-            st.success('Your heart sound is Normal')
-        else:
-            st.error('Your heart sound in Abnormal')
-
-
-if __name__ == '__main__':
-    main()
+if st.button('predict'):
+    result = predction(upload_audio)[0]
+    if result == 'normal':
+        st.success('Your heart sound is Normal')
+    else:
+        st.error('Your heart sound in Abnormal')
