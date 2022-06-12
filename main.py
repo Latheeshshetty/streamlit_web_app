@@ -3,7 +3,6 @@ import pickle
 import streamlit as st
 import numpy as np
 import librosa
-import soundfile
 
 # open the pickle file
 pickle_in = open('classifier.pkl', 'rb')
