@@ -1,3 +1,4 @@
 numpy>=1.22.3
 librosa==0.9.1
+libsndfile1-dev
 streamlit
