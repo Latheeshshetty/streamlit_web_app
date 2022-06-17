@@ -8,7 +8,7 @@ import soundfile
 import matplotlib.pyplot as plt
 
 # open the pickle file
-pickle_in = open('classifier.pkl', 'rb')
+pickle_in = open('classifiers.pkl', 'rb')
 classifier = pickle.load(pickle_in)
 
 # defining the function for prediction
